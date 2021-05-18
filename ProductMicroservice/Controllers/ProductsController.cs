@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Product.Microservice.Features.ProductFeatures.Commands;
 using Product.Microservice.Features.ProductFeatures.Queries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Product.Microservice.Controllers
@@ -18,6 +15,12 @@ namespace Product.Microservice.Controllers
 
         protected IMediator Mediator => mediator ??= HttpContext.RequestServices.GetService(typeof(IMediator)) as IMediator;
 
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateProductCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -28,12 +31,6 @@ namespace Product.Microservice.Controllers
         public async Task<IActionResult> Get(int id)
         {
             return Ok(await Mediator.Send(new GetProductByIdQuery { Id = id }));
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create(CreateProductCommand command)
-        {
-            return Ok(await Mediator.Send(command));
         }
 
         [HttpDelete]

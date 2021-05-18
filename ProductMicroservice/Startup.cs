@@ -30,6 +30,8 @@ namespace ProductMicroservice
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
+            services.AddScoped<IApplicationContext, ApplicationContext>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
