@@ -49,7 +49,7 @@ namespace Customer.Microservice.Repositories
             return customer;
         }
 
-        public void Update(int id, Models.Customer customer)
+        public void Update(Models.Customer customer)
         {
             using (SqlConnection connection = new(ConnectionString))
             {

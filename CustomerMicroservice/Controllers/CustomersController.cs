@@ -55,7 +55,8 @@ namespace Customer.Microservice.Controllers
         {
             if (ModelState.IsValid)
             {
-                productRepository.Update(id, customer);
+                customer.Id = id;
+                productRepository.Update(customer);
                 return Ok();
             }
             return BadRequest();
