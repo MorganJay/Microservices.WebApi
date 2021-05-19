@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Customer.Microservice.Repositories
 {
-    public class ProductRepository
+    public class CustomerRepository
     {
         private string ConnectionString { get; }
 
-        public ProductRepository(IConfiguration configuration)
+        public CustomerRepository(IConfiguration configuration)
         {
             ConnectionString = configuration.GetConnectionString("DefaultConnection");
         }

@@ -16,11 +16,11 @@ namespace Customer.Microservice.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private readonly ProductRepository productRepository;
+        private readonly CustomerRepository productRepository;
 
         public CustomersController(IConfiguration configuration)
         {
-            productRepository = new ProductRepository(configuration);
+            productRepository = new CustomerRepository(configuration);
         }
 
         // GET: api/<CustomersController>
